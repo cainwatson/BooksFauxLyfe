@@ -1,0 +1,26 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "book-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :isbn %>
+  <%= text_input f, :isbn %>
+  <%= error_tag f, :isbn %>
+
+  <%= label f, :tititle %>
+  <%= text_input f, :tititle %>
+  <%= error_tag f, :tititle %>
+
+  <%= label f, :edition %>
+  <%= text_input f, :edition %>
+  <%= error_tag f, :edition %>
+
+  <%= label f, :date_published %>
+  <%= date_select f, :date_published %>
+  <%= error_tag f, :date_published %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

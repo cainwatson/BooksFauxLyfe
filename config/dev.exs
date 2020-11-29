@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :books_faux_lyfe, BooksFauxLyfe.Repo,
-  username: "postgres",
+  username: "carin",
   password: "postgres",
   database: "books_faux_lyfe_dev",
   hostname: "localhost",
