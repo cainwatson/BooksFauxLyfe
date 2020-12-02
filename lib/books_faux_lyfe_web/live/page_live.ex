@@ -1,4 +1,6 @@
 defmodule BooksFauxLyfeWeb.PageLive do
+  @moduledoc false
+
   use BooksFauxLyfeWeb, :live_view
 
   @impl true

@@ -1,4 +1,6 @@
 defmodule BooksFauxLyfeWeb.ModalComponent do
+  @moduledoc false
+
   use BooksFauxLyfeWeb, :live_component
 
   @impl true

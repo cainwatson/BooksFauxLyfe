@@ -1,4 +1,6 @@
 defmodule BooksFauxLyfe.Works.Book do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 

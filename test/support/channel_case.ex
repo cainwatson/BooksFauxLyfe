@@ -17,6 +17,8 @@ defmodule BooksFauxLyfeWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -29,10 +31,10 @@ defmodule BooksFauxLyfeWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(BooksFauxLyfe.Repo)
+    :ok = Sandbox.checkout(BooksFauxLyfe.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(BooksFauxLyfe.Repo, {:shared, self()})
+      Sandbox.mode(BooksFauxLyfe.Repo, {:shared, self()})
     end
 
     :ok
