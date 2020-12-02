@@ -1,7 +1,7 @@
 defmodule BooksFauxLyfe.Works.Book do
   @moduledoc false
 
-  use Ecto.Schema
+  use BooksFauxLyfe.Schema
   import Ecto.Changeset
 
   schema "books" do
@@ -10,7 +10,7 @@ defmodule BooksFauxLyfe.Works.Book do
     field :isbn, :string
     field :title, :string
 
-    timestamps(inserted_at: :date_inserted, updated_at: :date_updated)
+    timestamps()
   end
 
   @doc false
