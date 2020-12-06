@@ -67,4 +67,73 @@ defmodule BooksFauxLyfe.WorksTest do
       assert %Ecto.Changeset{} = Works.change_book(book)
     end
   end
+
+  describe "authors" do
+    alias BooksFauxLyfe.Works.Author
+
+    @valid_attrs %{bio: "some bio", date_death: ~D[2010-04-17], dob: ~D[2010-04-17], name_first: "some name_first", name_last: "some name_last", name_middle: "some name_middle"}
+    @update_attrs %{bio: "some updated bio", date_death: ~D[2011-05-18], dob: ~D[2011-05-18], name_first: "some updated name_first", name_last: "some updated name_last", name_middle: "some updated name_middle"}
+    @invalid_attrs %{bio: nil, date_death: nil, dob: nil, name_first: nil, name_last: nil, name_middle: nil}
+
+    def author_fixture(attrs \\ %{}) do
+      {:ok, author} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Works.create_author()
+
+      author
+    end
+
+    test "list_authors/0 returns all authors" do
+      author = author_fixture()
+      assert Works.list_authors() == [author]
+    end
+
+    test "get_author!/1 returns the author with given id" do
+      author = author_fixture()
+      assert Works.get_author!(author.id) == author
+    end
+
+    test "create_author/1 with valid data creates a author" do
+      assert {:ok, %Author{} = author} = Works.create_author(@valid_attrs)
+      assert author.bio == "some bio"
+      assert author.date_death == ~D[2010-04-17]
+      assert author.dob == ~D[2010-04-17]
+      assert author.name_first == "some name_first"
+      assert author.name_last == "some name_last"
+      assert author.name_middle == "some name_middle"
+    end
+
+    test "create_author/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Works.create_author(@invalid_attrs)
+    end
+
+    test "update_author/2 with valid data updates the author" do
+      author = author_fixture()
+      assert {:ok, %Author{} = author} = Works.update_author(author, @update_attrs)
+      assert author.bio == "some updated bio"
+      assert author.date_death == ~D[2011-05-18]
+      assert author.dob == ~D[2011-05-18]
+      assert author.name_first == "some updated name_first"
+      assert author.name_last == "some updated name_last"
+      assert author.name_middle == "some updated name_middle"
+    end
+
+    test "update_author/2 with invalid data returns error changeset" do
+      author = author_fixture()
+      assert {:error, %Ecto.Changeset{}} = Works.update_author(author, @invalid_attrs)
+      assert author == Works.get_author!(author.id)
+    end
+
+    test "delete_author/1 deletes the author" do
+      author = author_fixture()
+      assert {:ok, %Author{}} = Works.delete_author(author)
+      assert_raise Ecto.NoResultsError, fn -> Works.get_author!(author.id) end
+    end
+
+    test "change_author/1 returns a author changeset" do
+      author = author_fixture()
+      assert %Ecto.Changeset{} = Works.change_author(author)
+    end
+  end
 end

@@ -1,0 +1,37 @@
+<h1>Show Author</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, BooksFauxLyfeWeb.AuthorLive.FormComponent,
+    id: @author.id,
+    title: @page_title,
+    action: @live_action,
+    author: @author,
+    return_to: Routes.author_show_path(@socket, :show, @author) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name :</strong>
+    <%= @author.name %>
+  </li>
+
+  <li>
+    <strong>Bio:</strong>
+    <%= @author.bio %>
+  </li>
+
+  <li>
+    <strong>Dob:</strong>
+    <%= @author.dob %>
+  </li>
+
+  <li>
+    <strong>Date death:</strong>
+    <%= @author.date_death %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.author_show_path(@socket, :edit, @author), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.author_index_path(@socket, :index) %></span>
