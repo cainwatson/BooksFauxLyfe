@@ -31,6 +31,13 @@ defmodule BooksFauxLyfeWeb.Router do
 
     live "/authors/:id", AuthorLive.Show, :show
     live "/authors/:id/show/edit", AuthorLive.Show, :edit
+
+    live "/works", WorkLive.Index, :index
+    live "/works/new", WorkLive.Index, :new
+    live "/works/:id/edit", WorkLive.Index, :edit
+
+    live "/works/:id", WorkLive.Show, :show
+    live "/works/:id/show/edit", WorkLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

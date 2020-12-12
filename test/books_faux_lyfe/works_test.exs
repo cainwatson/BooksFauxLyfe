@@ -136,4 +136,67 @@ defmodule BooksFauxLyfe.WorksTest do
       assert %Ecto.Changeset{} = Works.change_author(author)
     end
   end
+
+  describe "works" do
+    alias BooksFauxLyfe.Works.Work
+
+    @valid_attrs %{languages: [], subtitle: "some subtitle", title: "some title"}
+    @update_attrs %{languages: [], subtitle: "some updated subtitle", title: "some updated title"}
+    @invalid_attrs %{languages: nil, subtitle: nil, title: nil}
+
+    def work_fixture(attrs \\ %{}) do
+      {:ok, work} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Works.create_work()
+
+      work
+    end
+
+    test "list_works/0 returns all works" do
+      work = work_fixture()
+      assert Works.list_works() == [work]
+    end
+
+    test "get_work!/1 returns the work with given id" do
+      work = work_fixture()
+      assert Works.get_work!(work.id) == work
+    end
+
+    test "create_work/1 with valid data creates a work" do
+      assert {:ok, %Work{} = work} = Works.create_work(@valid_attrs)
+      assert work.languages == []
+      assert work.subtitle == "some subtitle"
+      assert work.title == "some title"
+    end
+
+    test "create_work/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Works.create_work(@invalid_attrs)
+    end
+
+    test "update_work/2 with valid data updates the work" do
+      work = work_fixture()
+      assert {:ok, %Work{} = work} = Works.update_work(work, @update_attrs)
+      assert work.languages == []
+      assert work.subtitle == "some updated subtitle"
+      assert work.title == "some updated title"
+    end
+
+    test "update_work/2 with invalid data returns error changeset" do
+      work = work_fixture()
+      assert {:error, %Ecto.Changeset{}} = Works.update_work(work, @invalid_attrs)
+      assert work == Works.get_work!(work.id)
+    end
+
+    test "delete_work/1 deletes the work" do
+      work = work_fixture()
+      assert {:ok, %Work{}} = Works.delete_work(work)
+      assert_raise Ecto.NoResultsError, fn -> Works.get_work!(work.id) end
+    end
+
+    test "change_work/1 returns a work changeset" do
+      work = work_fixture()
+      assert %Ecto.Changeset{} = Works.change_work(work)
+    end
+  end
 end

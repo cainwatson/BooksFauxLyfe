@@ -1,0 +1,32 @@
+<h1>Show Work</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, BooksFauxLyfeWeb.WorkLive.FormComponent,
+    id: @work.id,
+    title: @page_title,
+    action: @live_action,
+    work: @work,
+    return_to: Routes.work_show_path(@socket, :show, @work) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @work.title %>
+  </li>
+
+  <li>
+    <strong>Subtitle:</strong>
+    <%= @work.subtitle %>
+  </li>
+
+  <li>
+    <strong>Languages:</strong>
+    <%= @work.languages %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.work_show_path(@socket, :edit, @work), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.work_index_path(@socket, :index) %></span>
