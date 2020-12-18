@@ -5,9 +5,30 @@ defmodule BooksFauxLyfeWeb.AuthorLiveTest do
 
   alias BooksFauxLyfe.Works
 
-  @create_attrs %{bio: "some bio", date_death: ~D[2010-04-17], dob: ~D[2010-04-17], name_first: "some name_first", name_last: "some name_last", name_middle: "some name_middle"}
-  @update_attrs %{bio: "some updated bio", date_death: ~D[2011-05-18], dob: ~D[2011-05-18], name_first: "some updated name_first", name_last: "some updated name_last", name_middle: "some updated name_middle"}
-  @invalid_attrs %{bio: nil, date_death: nil, dob: nil, name_first: nil, name_last: nil, name_middle: nil}
+  @create_attrs %{
+    bio: "some bio",
+    date_death: ~D[2010-04-17],
+    dob: ~D[2010-04-17],
+    name_first: "some name_first",
+    name_last: "some name_last",
+    name_middle: "some name_middle"
+  }
+  @update_attrs %{
+    bio: "some updated bio",
+    date_death: ~D[2011-05-18],
+    dob: ~D[2011-05-18],
+    name_first: "some updated name_first",
+    name_last: "some updated name_last",
+    name_middle: "some updated name_middle"
+  }
+  @invalid_attrs %{
+    bio: nil,
+    date_death: nil,
+    dob: nil,
+    name_first: nil,
+    name_last: nil,
+    name_middle: nil
+  }
 
   defp fixture(:author) do
     {:ok, author} = Works.create_author(@create_attrs)

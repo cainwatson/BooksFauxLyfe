@@ -1,4 +1,6 @@
 defmodule BooksFauxLyfeWeb.AuthorLive.FormComponent do
+  @moduledoc false
+
   use BooksFauxLyfeWeb, :live_component
 
   alias BooksFauxLyfe.Works

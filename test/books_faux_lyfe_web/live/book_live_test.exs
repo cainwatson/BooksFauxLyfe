@@ -5,8 +5,18 @@ defmodule BooksFauxLyfeWeb.BookLiveTest do
 
   alias BooksFauxLyfe.Works
 
-  @create_attrs %{date_published: ~D[2010-04-17], edition: "some edition", isbn: "some isbn", tititle: "some tititle"}
-  @update_attrs %{date_published: ~D[2011-05-18], edition: "some updated edition", isbn: "some updated isbn", tititle: "some updated tititle"}
+  @create_attrs %{
+    date_published: ~D[2010-04-17],
+    edition: "some edition",
+    isbn: "some isbn",
+    tititle: "some tititle"
+  }
+  @update_attrs %{
+    date_published: ~D[2011-05-18],
+    edition: "some updated edition",
+    isbn: "some updated isbn",
+    tititle: "some updated tititle"
+  }
   @invalid_attrs %{date_published: nil, edition: nil, isbn: nil, tititle: nil}
 
   defp fixture(:book) do

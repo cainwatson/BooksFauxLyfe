@@ -1,4 +1,6 @@
 defmodule BooksFauxLyfeWeb.WorkLive.Show do
+  @moduledoc false
+
   use BooksFauxLyfeWeb, :live_view
 
   alias BooksFauxLyfe.Works
