@@ -85,25 +85,19 @@ defmodule BooksFauxLyfe.WorksTest do
       bio: "some bio",
       date_death: ~D[2010-04-17],
       dob: ~D[2010-04-17],
-      name_first: "some name_first",
-      name_last: "some name_last",
-      name_middle: "some name_middle"
+      name: "some name"
     }
     @update_attrs %{
       bio: "some updated bio",
       date_death: ~D[2011-05-18],
       dob: ~D[2011-05-18],
-      name_first: "some updated name_first",
-      name_last: "some updated name_last",
-      name_middle: "some updated name_middle"
+      name: "some updated name"
     }
     @invalid_attrs %{
       bio: nil,
       date_death: nil,
       dob: nil,
-      name_first: nil,
-      name_last: nil,
-      name_middle: nil
+      name: nil
     }
 
     def author_fixture(attrs \\ %{}) do
@@ -130,9 +124,7 @@ defmodule BooksFauxLyfe.WorksTest do
       assert author.bio == "some bio"
       assert author.date_death == ~D[2010-04-17]
       assert author.dob == ~D[2010-04-17]
-      assert author.name_first == "some name_first"
-      assert author.name_last == "some name_last"
-      assert author.name_middle == "some name_middle"
+      assert author.name == "some name"
     end
 
     test "create_author/1 with invalid data returns error changeset" do
@@ -145,9 +137,7 @@ defmodule BooksFauxLyfe.WorksTest do
       assert author.bio == "some updated bio"
       assert author.date_death == ~D[2011-05-18]
       assert author.dob == ~D[2011-05-18]
-      assert author.name_first == "some updated name_first"
-      assert author.name_last == "some updated name_last"
-      assert author.name_middle == "some updated name_middle"
+      assert author.name == "some updated name"
     end
 
     test "update_author/2 with invalid data returns error changeset" do

@@ -9,25 +9,19 @@ defmodule BooksFauxLyfeWeb.AuthorLiveTest do
     bio: "some bio",
     date_death: ~D[2010-04-17],
     dob: ~D[2010-04-17],
-    name_first: "some name_first",
-    name_last: "some name_last",
-    name_middle: "some name_middle"
+    name: "some name"
   }
   @update_attrs %{
     bio: "some updated bio",
     date_death: ~D[2011-05-18],
     dob: ~D[2011-05-18],
-    name_first: "some updated name_first",
-    name_last: "some updated name_last",
-    name_middle: "some updated name_middle"
+    name: "some updated name"
   }
   @invalid_attrs %{
     bio: nil,
     date_death: nil,
     dob: nil,
-    name_first: nil,
-    name_last: nil,
-    name_middle: nil
+    name: nil
   }
 
   defp fixture(:author) do
