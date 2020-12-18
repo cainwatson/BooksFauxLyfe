@@ -15,7 +15,7 @@
   <%= error_tag f, :subtitle %>
 
   <%= label f, :languages %>
-  <%= multiple_select f, :languages, ["Option 1": "option1", "Option 2": "option2"] %>
+  <%= multiple_select f, :languages, ["English": "en", "Spanish": "es"] %>
   <%= error_tag f, :languages %>
 
   <%= submit "Save", phx_disable_with: "Saving..." %>
