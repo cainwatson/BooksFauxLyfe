@@ -5,9 +5,9 @@ defmodule BooksFauxLyfeWeb.WorkLiveTest do
 
   alias BooksFauxLyfe.Works
 
-  @create_attrs %{languages: [], subtitle: "some subtitle", title: "some title"}
+  @create_attrs %{languages: ["en"], subtitle: "some subtitle", title: "some title"}
   @update_attrs %{languages: [], subtitle: "some updated subtitle", title: "some updated title"}
-  @invalid_attrs %{languages: nil, subtitle: nil, title: nil}
+  @invalid_attrs %{languages: [], subtitle: nil, title: nil}
 
   defp fixture(:work) do
     {:ok, work} = Works.create_work(@create_attrs)
@@ -26,7 +26,7 @@ defmodule BooksFauxLyfeWeb.WorkLiveTest do
       {:ok, _index_live, html} = live(conn, Routes.work_index_path(conn, :index))
 
       assert html =~ "Listing Works"
-      assert html =~ work.languages
+      assert html =~ work.title
     end
 
     test "saves new work", %{conn: conn} do
@@ -48,7 +48,7 @@ defmodule BooksFauxLyfeWeb.WorkLiveTest do
         |> follow_redirect(conn, Routes.work_index_path(conn, :index))
 
       assert html =~ "Work created successfully"
-      assert html =~ "some languages"
+      assert html =~ "some title"
     end
 
     test "updates work in listing", %{conn: conn, work: work} do
@@ -70,7 +70,7 @@ defmodule BooksFauxLyfeWeb.WorkLiveTest do
         |> follow_redirect(conn, Routes.work_index_path(conn, :index))
 
       assert html =~ "Work updated successfully"
-      assert html =~ "some updated languages"
+      assert html =~ "some updated title"
     end
 
     test "deletes work in listing", %{conn: conn, work: work} do
@@ -88,7 +88,7 @@ defmodule BooksFauxLyfeWeb.WorkLiveTest do
       {:ok, _show_live, html} = live(conn, Routes.work_show_path(conn, :show, work))
 
       assert html =~ "Show Work"
-      assert html =~ work.languages
+      assert html =~ work.title
     end
 
     test "updates work within modal", %{conn: conn, work: work} do
@@ -110,7 +110,7 @@ defmodule BooksFauxLyfeWeb.WorkLiveTest do
         |> follow_redirect(conn, Routes.work_show_path(conn, :show, work))
 
       assert html =~ "Work updated successfully"
-      assert html =~ "some updated languages"
+      assert html =~ "some updated title"
     end
   end
 end
