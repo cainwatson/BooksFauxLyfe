@@ -9,15 +9,15 @@ defmodule BooksFauxLyfeWeb.BookLiveTest do
     date_published: ~D[2010-04-17],
     edition: "some edition",
     isbn: "some isbn",
-    tititle: "some tititle"
+    title: "some title"
   }
   @update_attrs %{
     date_published: ~D[2011-05-18],
     edition: "some updated edition",
     isbn: "some updated isbn",
-    tititle: "some updated tititle"
+    title: "some updated title"
   }
-  @invalid_attrs %{date_published: nil, edition: nil, isbn: nil, tititle: nil}
+  @invalid_attrs %{date_published: nil, edition: nil, isbn: nil, title: nil}
 
   defp fixture(:book) do
     {:ok, book} = Works.create_book(@create_attrs)
