@@ -15,11 +15,11 @@
   <%= error_tag f, :bio %>
 
   <%= label f, :dob %>
-  <%= date_select f, :dob %>
+  <%= date_input f, :dob %>
   <%= error_tag f, :dob %>
 
   <%= label f, :date_death %>
-  <%= date_select f, :date_death %>
+  <%= date_input f, :date_death %>
   <%= error_tag f, :date_death %>
 
   <%= submit "Save", phx_disable_with: "Saving..." %>
