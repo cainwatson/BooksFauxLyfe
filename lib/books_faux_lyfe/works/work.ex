@@ -10,9 +10,8 @@ defmodule BooksFauxLyfe.Works.Work do
     field :title, :string
 
     many_to_many :authors, BooksFauxLyfe.Works.Author,
-      join_through: BooksFauxLyfe.Works.WorkAuthor
-
-    # join_keys: [id_work: :id, id_author: :id]
+      join_through: BooksFauxLyfe.Works.WorkAuthor,
+      join_keys: [id_work: :id, id_author: :id]
 
     timestamps()
   end
